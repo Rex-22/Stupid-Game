@@ -25,35 +25,51 @@ struct CommandRegister {
         self.commands.append(command)
     }
     
-    // Not woking ATM...
-    func loadCommandsFromFile(fileName: String) -> [String]? {
-        guard let path = Bundle.main.path(forResource: fileName, ofType: "txt") else {
-            return nil
+    // Working...I think?
+    func loadCommandsFromFile(fileName: String) -> Array<String> {
+        let nullText: Array<String> = Array<String>();
+        do {
+            let file = try String(contentsOfFile: fileName)
+            let text: [String] = file.components(separatedBy: "\n")
+            return text;
+        } catch {
+            Swift.print("Fatal Error: Couldn't read the contents!")
         }
         
-        do {
-            let content = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
-            return content.components(separatedBy: "\n")
-        } catch {
-            return nil
+        return nullText;
+    }
+    
+    //Structure is <Command>:<Result>
+    mutating func registerCommandsFromArray(_ commandsArray: Array<String>){
+        for command in commandsArray
+        {
+            if (command != "")
+            {
+                var com: Array<String> = command.components(separatedBy: ":");
+                registerCommand(Command(com[0], com[1]));
+            }
         }
     }
 }
 
 class Game {
     private(set) var isRunning: Bool;
-    var commandRegister: CommandRegister?;
+    var commandRegister: CommandRegister;
     
-    init() {
+    init()
+    {
         isRunning = false;
         commandRegister = CommandRegister();
     }
     
     func InitCommands(){
-        commandRegister!.registerCommand(Command("hi", "Hello There!"));
-        commandRegister!.registerCommand(Command("how are you?", "I'm fine thanks for asking"));
-        commandRegister!.registerCommand(Command("what is your name?", "I'm a DI"));
-        commandRegister!.registerCommand(Command("what is a DI?", "A dumb pre-programmed intelligence"));
+        commandRegister.registerCommand(Command("hi", "Hello There!"));
+        commandRegister.registerCommand(Command("how are you?", "I'm fine thanks for asking"));
+        commandRegister.registerCommand(Command("what is your name?", "I'm a DI"));
+        commandRegister.registerCommand(Command("what is a DI?", "A dumb pre-programmed intelligence"));
+        
+        let com: Array<String>? = self.commandRegister.loadCommandsFromFile(fileName: "/usr/share/man/man1/commands.txt");
+        self.commandRegister.registerCommandsFromArray(com!);
     }
     
     func start() {
@@ -65,7 +81,7 @@ class Game {
             var command = readLine();
             command = command?.localizedLowercase;
             var pros: Bool = false;
-            for element:Command in commandRegister!.commands
+            for element:Command in commandRegister.commands
             {
                 if (element.command! == command)
                 {

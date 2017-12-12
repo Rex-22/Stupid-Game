@@ -7,22 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B1E41DF1FDFED4800FD196A /* commands.txt in Copy Files */ = {isa = PBXBuildFile; fileRef = 7B1E41D91FDFEA6500FD196A /* commands.txt */; };
 		7B95D66E1FDFCEA700857145 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B95D66D1FDFCEA700857145 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7B95D6681FDFCEA700857145 /* CopyFiles */ = {
+		7B95D6681FDFCEA700857145 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 7;
 			files = (
+				7B1E41DF1FDFED4800FD196A /* commands.txt in Copy Files */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B1E41D91FDFEA6500FD196A /* commands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = commands.txt; sourceTree = "<group>"; };
 		7B95D66A1FDFCEA700857145 /* SwiftConsoleGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftConsoleGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B95D66D1FDFCEA700857145 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +61,7 @@
 		7B95D66C1FDFCEA700857145 /* SwiftConsoleGame */ = {
 			isa = PBXGroup;
 			children = (
+				7B1E41D91FDFEA6500FD196A /* commands.txt */,
 				7B95D66D1FDFCEA700857145 /* main.swift */,
 			);
 			path = SwiftConsoleGame;
@@ -71,7 +76,7 @@
 			buildPhases = (
 				7B95D6661FDFCEA700857145 /* Sources */,
 				7B95D6671FDFCEA700857145 /* Frameworks */,
-				7B95D6681FDFCEA700857145 /* CopyFiles */,
+				7B95D6681FDFCEA700857145 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -88,6 +93,9 @@
 		7B95D6621FDFCEA700857145 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					Commands,
+				);
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Ruben Bezuidenhout";
